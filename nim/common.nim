@@ -140,7 +140,7 @@ const
 
 
 type
-  TusbDescDeviceT* {.importc: "tusb_desc_device_t", header: "tusb_types.h", bycopy.} = object
+  TusbDescDeviceT* {.importc: "tusb_desc_device_t", header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bcdUSB* {.importc: "bcdUSB".}: uint16
@@ -158,7 +158,7 @@ type
 
 
 type
-  TusbDescBosT* {.importc: "tusb_desc_bos_t", header: "tusb_types.h", bycopy.} = object
+  TusbDescBosT* {.importc: "tusb_desc_bos_t", header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     wTotalLength* {.importc: "wTotalLength".}: uint16
@@ -167,7 +167,7 @@ type
 
 type
   TusbDescConfigurationT* {.importc: "tusb_desc_configuration_t",
-                           header: "tusb_types.h", bycopy.} = object
+                           header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     wTotalLength* {.importc: "wTotalLength".}: uint16
@@ -180,7 +180,7 @@ type
 
 type
   TusbDescInterfaceT* {.importc: "tusb_desc_interface_t", header: "tusb_types.h",
-                       bycopy.} = object
+                       bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bInterfaceNumber* {.importc: "bInterfaceNumber".}: uint8
@@ -194,14 +194,14 @@ type
 
 type
   INNER_C_STRUCT_tusb_types_375* {.importc: "tusb_desc_endpoint_t::no_name",
-                                  header: "tusb_types.h", bycopy.} = object
+                                  header: "tusb_types.h", bycopy, packed.} = object
     xfer* {.bitsize: 2.}: uint8
     sync* {.bitsize: 2.}: uint8
     usage* {.bitsize: 2.}: uint8
     reserved* {.bitsize: 2.}: uint8
 
   TusbDescEndpointT* {.importc: "tusb_desc_endpoint_t", header: "tusb_types.h",
-                      bycopy.} = object
+                      bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bEndpointAddress* {.importc: "bEndpointAddress".}: uint8
@@ -212,7 +212,7 @@ type
 
 type
   TusbDescOtherSpeedT* {.importc: "tusb_desc_other_speed_t",
-                        header: "tusb_types.h", bycopy.} = object
+                        header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     wTotalLength* {.importc: "wTotalLength".}: uint16
@@ -226,7 +226,7 @@ type
 
 type
   TusbDescDeviceQualifierT* {.importc: "tusb_desc_device_qualifier_t",
-                             header: "tusb_types.h", bycopy.} = object
+                             header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bcdUSB* {.importc: "bcdUSB".}: uint16
@@ -240,7 +240,7 @@ type
 
 type
   TusbDescInterfaceAssocT* {.importc: "tusb_desc_interface_assoc_t",
-                            header: "tusb_types.h", bycopy.} = object
+                            header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bFirstInterface* {.importc: "bFirstInterface".}: uint8
@@ -254,7 +254,7 @@ type
 
 type
   TusbDescStringT* {.importc: "tusb_desc_string_t", header: "tusb_types.h", bycopy.} = object
-    bLength* {.importc: "bLength".}: uint8
+    bLength* {.importc: "bLength", packed.}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     unicodeString* {.importc: "unicode_string".}: UncheckedArray[uint16]
 
@@ -262,7 +262,7 @@ type
 
 type
   TusbDescBosPlatformT* {.importc: "tusb_desc_bos_platform_t",
-                         header: "tusb_types.h", bycopy.} = object
+                         header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bDevCapabilityType* {.importc: "bDevCapabilityType".}: uint8
@@ -274,7 +274,7 @@ type
 
 type
   TusbDescWebusbUrlT* {.importc: "tusb_desc_webusb_url_t", header: "tusb_types.h",
-                       bycopy.} = object
+                       bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     bScheme* {.importc: "bScheme".}: uint8
@@ -284,7 +284,7 @@ type
 
 type
   INNER_C_STRUCT_tusb_types_476* {.importc: "tusb_desc_dfu_functional_t::no_name",
-                                  header: "tusb_types.h", bycopy.} = object
+                                  header: "tusb_types.h", bycopy, packed.} = object
     bitCanDnload* {.bitsize: 1.}: uint8
     bitCanUpload* {.bitsize: 1.}: uint8
     bitManifestationTolerant* {.bitsize: 1.}: uint8
@@ -292,12 +292,12 @@ type
     reserved* {.bitsize: 4.}: uint8
 
   INNER_C_UNION_tusb_types_476* {.importc: "tusb_desc_dfu_functional_t::no_name",
-                                 header: "tusb_types.h", bycopy, union.} = object
+                                 header: "tusb_types.h", bycopy, union, packed.} = object
     bmAttributes* {.importc: "bmAttributes".}: INNER_C_STRUCT_tusb_types_476
     bAttributes* {.importc: "bAttributes".}: uint8
 
   TusbDescDfuFunctionalT* {.importc: "tusb_desc_dfu_functional_t",
-                           header: "tusb_types.h", bycopy.} = object
+                           header: "tusb_types.h", bycopy, packed.} = object
     bLength* {.importc: "bLength".}: uint8
     bDescriptorType* {.importc: "bDescriptorType".}: uint8
     anoTusbTypes476* {.importc: "ano_tusb_types_476".}: INNER_C_UNION_tusb_types_476
@@ -309,18 +309,18 @@ type
 
 type
   INNER_C_STRUCT_tusb_types_496* {.importc: "tusb_control_request_t::no_name",
-                                  header: "tusb_types.h", bycopy.} = object
+                                  header: "tusb_types.h", bycopy, packed.} = object
     recipient* {.bitsize: 5.}: uint8
     `type`* {.bitsize: 2.}: uint8
     direction* {.bitsize: 1.}: uint8
 
   INNER_C_UNION_tusb_types_496* {.importc: "tusb_control_request_t::no_name",
-                                 header: "tusb_types.h", bycopy, union.} = object
+                                 header: "tusb_types.h", bycopy, union, packed.} = object
     bmRequestTypeBit* {.importc: "bmRequestType_bit".}: INNER_C_STRUCT_tusb_types_496
     bmRequestType* {.importc: "bmRequestType".}: uint8
 
   TusbControlRequestT* {.importc: "tusb_control_request_t", header: "tusb_types.h",
-                        bycopy.} = object
+                        bycopy, packed.} = object
     anoTusbTypes496* {.importc: "ano_tusb_types_496".}: INNER_C_UNION_tusb_types_496
     bRequest* {.importc: "bRequest".}: uint8
     wValue* {.importc: "wValue".}: uint16
