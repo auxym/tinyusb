@@ -326,3 +326,12 @@ type
     wValue* {.importc: "wValue".}: uint16
     wIndex* {.importc: "wIndex".}: uint16
     wLength* {.importc: "wLength".}: uint16
+
+
+# Initialize device/host stack
+# Note: when using with RTOS, this should be called after scheduler/kernel is started.
+# Otherwise it could cause kernel issue since USB IRQ handler does use RTOS queue API.
+proc tusbInit*(): bool {.importc: "tusb_init", header: "tusb.h".}
+
+# Check if stack is initialized
+proc tusbInited*(): bool {.importc: "tusb_inited", header: "tusb.h".}
